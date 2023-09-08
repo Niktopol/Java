@@ -1,8 +1,8 @@
 package task2;
 
 public class Ball {
-    double x = 0.0;
-    double y = 0.0;
+    private double x = 0.0;
+    private double y = 0.0;
     public Ball(double x, double y) {
         this.x = x;
         this.y = y;
@@ -29,6 +29,7 @@ public class Ball {
         x += xDisp;
         y += yDisp;
     }
+    @Override
     public String toString() {
         return "Ball pos: x:" + x + " y:" + y;
     }

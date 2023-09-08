@@ -17,7 +17,7 @@ public class Tester {
     }
     public void printCircles(){
         for (int i = 0; i < space; i++) {
-            System.out.println(circles[i].toString());
+            System.out.println(circles[i]);
         }
     }
 }
