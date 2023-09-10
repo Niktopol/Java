@@ -3,6 +3,13 @@ import task2.*;
 import java.util.Scanner;
 
 public class Task2 {
+    public void revString(String[] s){
+        for(int i = 0; i < s.length/2; i++){
+            String temp = s[i];
+            s[i] = s[s.length-i-1];
+            s[s.length-i-1] = temp;
+        }
+    }
     public void doThing(){
         Scanner scanner = new Scanner(System.in);
 
@@ -67,5 +74,26 @@ public class Task2 {
         }
         TestCircle testCircle = new TestCircle();
         testCircle.doThing();
+        Bookshelf bookshelf = new Bookshelf();
+        bookshelf.addBook(new Book(pushkin, "first",2001));
+        bookshelf.addBook(new Book(pushkin, "fourth",2031));
+        bookshelf.addBook(new Book(pushkin, "second",2010));
+        bookshelf.addBook(new Book(pushkin, "third",2021));
+        System.out.println(bookshelf);
+        bookshelf.sortShelf();
+        System.out.println(bookshelf);
+
+        String[] strArr = {"one", "two", "three", "four", "five"};
+        for (String s: strArr){
+            System.out.println(s+" ");
+        }
+        revString(strArr);
+        for (String s: strArr){
+            System.out.println(s+" ");
+        }
+        Poker poker = new Poker();
+        poker.giveCards(3);
+        HowMany howMany = new HowMany();
+        howMany.words();
     }
 }
