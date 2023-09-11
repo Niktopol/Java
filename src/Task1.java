@@ -1,9 +1,10 @@
+import java.math.BigInteger;
 import java.util.Scanner;
 public class Task1 {
-    private int fact(int num){
-        int res = 1;
+    private BigInteger fact(int num){
+        BigInteger res = BigInteger.valueOf(1);
         for (int i = 1; i <= num; i++){
-            res *= i;
+            res = res.multiply(BigInteger.valueOf(i));
         }
         return res;
     }
@@ -72,7 +73,7 @@ public class Task1 {
         //-----------------------------------------№7
         System.out.println("Введите число");
         //Вывод факториала числа
-        System.out.println(fact(sc.nextInt()));
+        System.out.println(this.fact(sc.nextInt()));
         //-----------------------------------------
     }
 }

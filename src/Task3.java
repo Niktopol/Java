@@ -1,5 +1,7 @@
 import task2.Circle;
 import task2.Tester;
+import task3.Employee;
+import task3.Report;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -90,5 +92,30 @@ public class Task3 {
                 System.out.println("Повторите ввод");
             }
         }
+        Double doubleObj1 = Double.valueOf(6543.165456);
+        Double doubleObj2 = Double.valueOf("98.77858");
+
+        String stringVal = "9.75985569";
+        double doubleVal = Double.parseDouble(stringVal);
+
+        Double doubleObj = 797847.844;
+        double pDouble = doubleObj.doubleValue();
+        int pInt = doubleObj.intValue();
+        long pLong = doubleObj.longValue();
+        float pFloat = doubleObj.floatValue();
+        short pShort = doubleObj.shortValue();
+        byte pByte = doubleObj.byteValue();
+
+        System.out.println("Значение объекта Double: " + doubleObj);
+
+        String d = Double.toString(9.656565);
+
+        Employee[] employees = new Employee[5];
+        String[] names = {"Ivan", "Dima", "Lena", "Alex", "Petya"};
+        for (int i = 0; i < 5; i++){
+            employees[i] = new Employee(names[i], rand.nextInt(100000)+1+rand.nextDouble());
+        }
+        Report report = new Report();
+        report.generateReport(employees);
     }
 }
