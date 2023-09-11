@@ -1,8 +1,10 @@
 import task2.Circle;
 import task2.Tester;
-import task3.Employee;
-import task3.Report;
+import task3.*;
 
+import java.text.NumberFormat;
+import java.util.Collections;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -108,7 +110,25 @@ public class Task3 {
 
         System.out.println("Значение объекта Double: " + doubleObj);
 
-        String d = Double.toString(9.656565);
+        String d = Double.toString(3.14);
+
+        System.out.println(Converter.convert(rand.nextInt(100000)+1+rand.nextDouble(),Locale.FRANCE,Locale.CHINA));
+        System.out.println(Converter.convert(rand.nextInt(100000)+1+rand.nextDouble(),Locale.CHINA,Locale.US));
+        System.out.println(Converter.convert(rand.nextInt(100000)+1+rand.nextDouble(),Locale.US,Locale.FRANCE));
+
+        Shop shop = new Shop();
+        shop.addGood(new Good(6846,"Apple"));
+        shop.addGood(new Good(6,"Banana"));
+        shop.addGood(new Good(99999,"Grapes"));
+        shop.addGood(new Good(4685901,"Mango"));
+        shop.addGood(new Good(1,"Cucumber"));
+
+        System.out.println(shop);
+        shop.buy(1, Locale.CHINA);
+        shop.buy(1, Locale.FRANCE);
+        shop.buy(1, Locale.US);
+
+        System.out.println(shop);
 
         Employee[] employees = new Employee[5];
         String[] names = {"Ivan", "Dima", "Lena", "Alex", "Petya"};
