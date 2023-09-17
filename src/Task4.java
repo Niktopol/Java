@@ -1,49 +1,76 @@
+import task4.*;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Task4 {
-    private enum Season{
-        WINTER(-5.3, "В это время года выпадает снег"),
-        SPRING(10.6, "В это время года растут листья"),
-        SUMMER(29.7, "В это время года принято отдыхать"),
-        AUTUMN(-12.2, "В это время года деревья желтеют");
-        private double temp;
-        private String info;
-        private Season(double temp, String info){
-            this.temp = temp;
-            this.info = info;
-        }
-        public void theLover(Season season){
-            switch (season){
-                case WINTER:
-                    System.out.println("Я люблю зиму");
-                    break;
-                case SPRING:
-                    System.out.println("Я люблю весну");
-                    break;
-                case SUMMER:
-                    System.out.println("Я люблю лето");
-                    break;
-                case AUTUMN:
-                    System.out.println("Я люблю осень");
-                    break;
-            }
-        }
-        public String getDescription(){
-            if (this.equals(SUMMER)){
-                return "Тёплое время года";
-            }else if(this.equals(WINTER) || this.equals(SPRING) || this.equals(AUTUMN)){
-                return "Холодное время года";
-            }
-            return "";
-        }
-        @Override
-        public String toString(){
-            return info + " t: " + temp;
-        }
-    }
     public void doThing(){
         Season season = Season.SUMMER;
         season.theLover(season);
         for(Season i: Season.values()){
             System.out.println(i + " " + i.getDescription());
+        }
+        Clothes[] wardrobe = new Clothes[4];
+        wardrobe[0] = new Pants(Sizes.M, 641.564, "Red");
+        wardrobe[1] = new TShirt(Sizes.XXS, 6066656.4, "White");
+        wardrobe[2] = new Skirt(Sizes.L, 6.4, "Black");
+        wardrobe[3] = new Tie(Sizes.S, 0.4, "Rainbow");
+        Atelier atelier = new Atelier();
+        atelier.dressMan(wardrobe);
+        atelier.dressWoman(wardrobe);
+
+        Scanner scanner = new Scanner(System.in);
+        String login = "admin";
+        String pass = "123";
+        Wires wires = Wires.COPPER;
+        Tablets tablets = Tablets.SMALL;
+        ArrayList<Good> cart = new ArrayList<>();
+        boolean f = true;
+        while (f){
+            System.out.println("Выберите каталог:");
+            String n = scanner.nextLine();
+            switch (n){
+                case "Wires":
+                    System.out.println("Каталог: "+wires.getCatName());
+                    System.out.println("Выберите товар:");
+                    for(Wires i: Wires.values()){
+                        System.out.println(i);
+                    }
+                    n = scanner.nextLine();
+                    for(Wires i: Wires.values()){
+                        if (i.getName().equals(n)){
+                            cart.add(i);
+                        }
+                    }
+                    break;
+                case "Tablets":
+                    System.out.println("Каталог: "+wires.getCatName());
+                    System.out.println("Выберите товар:");
+                    for(Tablets i: Tablets.values()){
+                        System.out.println(i);
+                    }
+                    n = scanner.nextLine();
+                    for(Tablets i: Tablets.values()){
+                        if (i.getName().equals(n)){
+                            cart.add(i);
+                        }
+                    }
+                    break;
+                case "Buy":
+                    double price = 0;
+                    for(Good i: cart){
+                        price += i.getPrice();
+                    }
+                    System.out.println("Куплено "+cart.size() + " товаров на сумму "+price);
+                    break;
+                default:
+                    f = false;
+                    break;
+            }
+        }
+        Pc pcs;
+        for(Pc i: Pc.values()){
+            System.out.println(i);
         }
     }
 }
