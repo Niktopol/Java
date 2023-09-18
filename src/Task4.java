@@ -5,11 +5,13 @@ import java.util.Scanner;
 
 public class Task4 {
     public void doThing(){
+        //Задание 1
         Season season = Season.SUMMER;
         season.theLover(season);
         for(Season i: Season.values()){
             System.out.println(i + " " + i.getDescription());
         }
+        //Задание 2
         Clothes[] wardrobe = new Clothes[4];
         wardrobe[0] = new Pants(Sizes.M, 641.564, "Red");
         wardrobe[1] = new TShirt(Sizes.XXS, 6066656.4, "White");
@@ -18,14 +20,14 @@ public class Task4 {
         Atelier atelier = new Atelier();
         atelier.dressMan(wardrobe);
         atelier.dressWoman(wardrobe);
-
+        //Задание 3
         Scanner scanner = new Scanner(System.in);
         String login = "admin";
         String pass = "123";
         Wires wires = Wires.COPPER;
         Tablets tablets = Tablets.SMALL;
         ArrayList<Good> cart = new ArrayList<>();
-        boolean f = true;
+        boolean f = scanner.nextLine().equals(login) && scanner.nextLine().equals(pass);
         while (f){
             System.out.println("Выберите каталог:");
             String n = scanner.nextLine();
@@ -68,6 +70,7 @@ public class Task4 {
                     break;
             }
         }
+        //Задание 4
         Pc pcs;
         for(Pc i: Pc.values()){
             System.out.println(i);

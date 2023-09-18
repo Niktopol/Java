@@ -12,16 +12,16 @@ public class Task2 {
     }
     public void doThing(){
         Scanner scanner = new Scanner(System.in);
-
+        //Задание 1
         Author pushkin = new Author("Alex", "litpushkin@mail.com", 'M');
         System.out.println(pushkin.getName()+" "+pushkin.getEmail()+" "+pushkin.getGender());
         pushkin.setEmail("bestwriter@mail.com"); System.out.println(pushkin.getEmail());
         System.out.println(pushkin.toString());
-
+        //Задание 2
         Ball ball = new Ball(1, 1);
         TestBall tester = new TestBall();
         tester.startTest(ball);
-
+        //Задание 3
         Tester circs = new Tester(5);
         circs.addCircle(new Circle(10, 11, 12));
         circs.addCircle(new Circle(5465, 1654654, 1));
@@ -29,7 +29,7 @@ public class Task2 {
         circs.printCircles();
         circs.removeCircle();
         circs.printCircles();
-
+        //Задание 4
         Shop shop = new Shop();
 
         while (true){
@@ -72,8 +72,10 @@ public class Task2 {
                 break;
             }
         }
+        //Задание 5
         TestCircle testCircle = new TestCircle();
         testCircle.doThing();
+        //Задание 6
         Bookshelf bookshelf = new Bookshelf();
         bookshelf.addBook(new Book(pushkin, "first",2001));
         bookshelf.addBook(new Book(pushkin, "fourth",2031));
@@ -82,7 +84,7 @@ public class Task2 {
         System.out.println(bookshelf);
         bookshelf.sortShelf();
         System.out.println(bookshelf);
-
+        //Задание 7
         String[] strArr = {"one", "two", "three", "four", "five"};
         for (String s: strArr){
             System.out.println(s+" ");
@@ -91,8 +93,10 @@ public class Task2 {
         for (String s: strArr){
             System.out.println(s+" ");
         }
+        //Задание 8
         Poker poker = new Poker();
         poker.giveCards(3);
+        //Задание 9
         HowMany howMany = new HowMany();
         howMany.words();
     }

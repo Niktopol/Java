@@ -24,6 +24,7 @@ public class Task3 {
     }
 
     public void doThing() {
+        //Задание 1 на Math и Random
         double[] arr = new double[10];
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++) {
@@ -40,6 +41,7 @@ public class Task3 {
             }
         }
         printArr(arr);
+        //Задание 2 на Math и Random
         Tester circs = new Tester(5);
         circs.addCircle(new Circle(rand.nextInt(100) * Math.random(), rand.nextInt(1000) * Math.random(), rand.nextInt(1000)));
         circs.addCircle(new Circle(rand.nextInt(100) * Math.random(), rand.nextInt(1000) * Math.random(), rand.nextInt(1000)));
@@ -53,7 +55,7 @@ public class Task3 {
         System.out.println();
         System.out.println(circs.getBiggest());
         System.out.println(circs.getSmallest());
-
+        //Задание 3 на Math и Random
         int[] intArr = {rand.nextInt(90) + 10, rand.nextInt(90) + 10, rand.nextInt(90) + 10, rand.nextInt(90) + 10};
         boolean flag = true;
         printArr(intArr);
@@ -63,7 +65,7 @@ public class Task3 {
             }
         }
         System.out.println(flag ? "Является строго возрастающей последовательностью" : "Не является строго возрастающей последовательностью");
-
+        //Задание 4 на Math и Random
         Scanner scanner = new Scanner(System.in);
         int n;
         while (true) {
@@ -94,12 +96,13 @@ public class Task3 {
                 System.out.println("Повторите ввод");
             }
         }
+        //Задание 1 на классы Оболочки
         Double doubleObj1 = Double.valueOf(6543.165456);
         Double doubleObj2 = Double.valueOf("98.77858");
-
+        //Задание 2 на классы Оболочки
         String stringVal = "9.75985569";
         double doubleVal = Double.parseDouble(stringVal);
-
+        //Задание 3 на классы Оболочки
         Double doubleObj = 797847.844;
         double pDouble = doubleObj.doubleValue();
         int pInt = doubleObj.intValue();
@@ -107,11 +110,11 @@ public class Task3 {
         float pFloat = doubleObj.floatValue();
         short pShort = doubleObj.shortValue();
         byte pByte = doubleObj.byteValue();
-
+        //Задание 4 на классы Оболочки
         System.out.println("Значение объекта Double: " + doubleObj);
-
+        //Задание 5 на классы Оболочки
         String d = Double.toString(3.14);
-
+        //Задания 1, 2 на форматирование строк вывода
         System.out.println(Converter.convert(rand.nextInt(100000)+1+rand.nextDouble(),Locale.FRANCE,Locale.CHINA));
         System.out.println(Converter.convert(rand.nextInt(100000)+1+rand.nextDouble(),Locale.CHINA,Locale.US));
         System.out.println(Converter.convert(rand.nextInt(100000)+1+rand.nextDouble(),Locale.US,Locale.FRANCE));
@@ -129,7 +132,7 @@ public class Task3 {
         shop.buy(1, Locale.US);
 
         System.out.println(shop);
-
+        //Задание 3 на форматирование строк вывода
         Employee[] employees = new Employee[5];
         String[] names = {"Ivan", "Dima", "Lena", "Alex", "Petya"};
         for (int i = 0; i < 5; i++){
