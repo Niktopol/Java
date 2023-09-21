@@ -27,14 +27,11 @@ public abstract class Shape {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
-    public double getArea(){
-        return 0;
-    }
-    public double getPerimeter(){
-        return 0;
-    }
+    public abstract double getArea();
+    public abstract double getPerimeter();
+    public abstract String getType();
     @Override
     public String toString(){
-        return "is "+color+ "and"+(filled? " ":" not ")+"filled";
+        return " is "+color+ " and"+(filled? " ":" not ")+"filled";
     }
 }

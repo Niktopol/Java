@@ -11,12 +11,28 @@ public class Square extends Rectangle{
         super(side, side, color, filled);
     }
     public double getSide(){
-        return getWidth();
+        return length;
     }
     public void setSide(double side){
-        setLength(side);
-        setWidth(side);
+        this.length = side;
+        this.width = side;
     }
-    //@Override
-    //public void ()
+    @Override
+    public void setLength(double length){
+        this.length = length;
+        this.width = length;
+    }
+    @Override
+    public void setWidth(double width){
+        this.length = width;
+        this.width = width;
+    }
+    @Override
+    public String getType(){
+        return "Square";
+    }
+    @Override
+    public String toString(){
+        return "Square with side: " + length + " is "+color+ " and"+(filled? " ":" not ")+"filled";
+    }
 }

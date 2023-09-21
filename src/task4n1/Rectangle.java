@@ -36,4 +36,16 @@ public class Rectangle extends Shape{
     public double getArea(){
         return width*length;
     }
+    @Override
+    public double getPerimeter(){
+        return width*2+length*2;
+    }
+    @Override
+    public String getType(){
+        return "Rectangle";
+    }
+    @Override
+    public String toString(){
+        return "Rectangle with length: " + length + ", and width: " + width + super.toString();
+    }
 }
