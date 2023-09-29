@@ -9,6 +9,7 @@ public class Main {
         Task6 _6th = new Task6();
         Task7 _7th = new Task7();
         Task8 _8th = new Task8();
-        _8th.doThing();
+        Task9 _9th = new Task9();
+        _9th.doThing();
     }
 }
