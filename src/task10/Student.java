@@ -81,6 +81,6 @@ public class Student implements Comparable<Student> {
     }
     @Override
     public String toString(){
-        return "ID: "+iDNumber+" Points: "+points;
+        return "ID: "+iDNumber+" Points: "+points + " " +name + " "+surname + " "+ speciality + " "+ course + " "+ group;
     }
 }

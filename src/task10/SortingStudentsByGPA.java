@@ -100,9 +100,16 @@ public class SortingStudentsByGPA implements Comparator<Student> {
     }
     ArrayList<Student> iDNumber = new ArrayList<>();
     public void setArray(int num){
+        iDNumber.clear();
         for (int i = 0; i < num; i++){
             iDNumber.add(new Student(random.nextInt(100000), random.nextInt(100), getString(10), getString(10), getString(15), random.nextInt(30), getString(4)));
         }
+    }
+    public void addArray(ArrayList<Student> toAdd){
+        iDNumber.addAll(toAdd);
+    }
+    public ArrayList<Student> getArr(){
+        return iDNumber;
     }
     public void outArray(){
         System.out.println(Arrays.toString(iDNumber.toArray()));
