@@ -16,6 +16,7 @@ public class Main {
         Task11 _11th = new Task11();
         Task12 _12th = new Task12();
         Task13 _13th = new Task13();
-        _13th.doThing();
+        Task14 _14th = new Task14();
+        _14th.doThing();
     }
 }
