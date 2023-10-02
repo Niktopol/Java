@@ -70,17 +70,17 @@ public class Task8 {
         System.out.println("Введите число: ");
         num = Math.abs(scanner.nextInt());
         System.out.println("Число является простым: "+ (isPrime(num, 2) ? "YES":"NO"));
-        //Задание 6
+        //Задание 7
         System.out.println("Введите число: ");
         num = Math.abs(scanner.nextInt());
         System.out.print("Простые множители числа: ");
         findDels(num, 2);
         System.out.println();
-        //Задание 7
+        //Задание 8
         System.out.println("Введите строку: ");
         String s = scanner.next();
         System.out.println("Является палиндромом: "+ (isPolind(s, 0) ? "YES":"NO"));
-        //Задание 8
+        //Задание 9
         System.out.println("Введите число нулей: ");
         int a = Math.abs(scanner.nextInt());
         System.out.println("Введите число единиц: ");
