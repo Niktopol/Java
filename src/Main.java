@@ -1,5 +1,7 @@
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         Task1 _1st = new Task1();
         Task2 _2nd = new Task2();
         Task3 _3rd = new Task3();
@@ -12,6 +14,8 @@ public class Main {
         Task9 _9th = new Task9();
         Task10 _10th = new Task10();
         Task11 _11th = new Task11();
-        _10th.doThing();
+        Task12 _12th = new Task12();
+        Task13 _13th = new Task13();
+        _13th.doThing();
     }
 }
