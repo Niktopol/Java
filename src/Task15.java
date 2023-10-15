@@ -1,12 +1,84 @@
 import task5.VerticalLayout;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Task15 {
+    private StringBuilder num = new StringBuilder();
+    private StringBuilder result = new StringBuilder();
+    private int state = 0;
 
+    private JTextArea text = new JTextArea(3,30);
+
+    private void updateText(){
+        text.setText(num.toString() + '\n' + result);
+    }
+    private void calcExpr(){
+        try {
+            if (state == 2){
+                char oper = result.charAt(result.length()-1);
+                if (oper == '+'){
+                    result = new StringBuilder(Double.toString(Double.parseDouble(result.toString().substring(0, result.length()-1)) + Double.parseDouble(num.toString())));
+                }else if (oper == '-'){
+                    result = new StringBuilder(Double.toString(Double.parseDouble(result.toString().substring(0, result.length()-1)) - Double.parseDouble(num.toString())));
+                }else if (oper == '*'){
+                    result = new StringBuilder(Double.toString(Double.parseDouble(result.toString().substring(0, result.length()-1)) * Double.parseDouble(num.toString())));
+                }else if (oper == '/'){
+                    result = new StringBuilder(Double.toString(Double.parseDouble(result.toString().substring(0, result.length()-1)) / Double.parseDouble(num.toString())));
+                }
+                state = 1;
+                num.delete(0, num.length());
+            }else{
+                result = new StringBuilder(Double.toString(Double.parseDouble(num.toString())));
+                num.delete(0, num.length());
+            }
+        }catch (Exception e){
+            num.delete(0, num.length());
+            result = new StringBuilder("Error");
+            state = 0;
+        }
+        updateText();
+    }
+    private class CalculatorButtonAction extends JButton{
+        private void update(){
+            String oper = this.getText();
+            if (oper.equals("-")||oper.equals("+")||oper.equals("/")||oper.equals("*")){
+                if (state == 2){
+                    result.replace(result.length()-1, result.length(), oper);
+                }else if (state == 1){
+                    if (!num.isEmpty()){
+                        result = new StringBuilder(num.toString());
+                        num.delete(0, num.length());
+                        result.append(oper);
+                        state = 2;
+                    }else if (!result.isEmpty()){
+                        result.append(oper);
+                        state = 2;
+                    }
+                }
+            }else{
+                num.append(oper);
+                state = (state == 0)? 1 : state;
+            }
+            updateText();
+        }
+        public CalculatorButtonAction(String s){
+            super(s);
+            this.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    update();
+                }
+            });
+        }
+    }
     private void calculator(){
         JFrame frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,6 +108,7 @@ public class Task15 {
 
             }
         });
+
         ac2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,7 +142,7 @@ public class Task15 {
         frame.setSize(400,400);
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(400,400));
-        panel.setLayout(new VerticalLayout());
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         String[] cntrs = {"---", "Australia", "China", "England", "Russia"};
         JComboBox<String> countries = new JComboBox<>(cntrs);
         JTextArea info = new JTextArea(0,30);
@@ -119,9 +192,132 @@ public class Task15 {
         frame.getContentPane().add(panel);
         frame.setVisible(true);
     }
+    private void textinteractor(){
+        JFrame frame = new JFrame("Text interactor");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400,400);
+
+        JPanel main = new JPanel();
+        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+        JPanel bpanel = new JPanel();
+        bpanel.setLayout(new FlowLayout());
+        JPanel tpanel = new JPanel();
+        tpanel.setLayout(new BorderLayout());
+
+        JButton b1 = new JButton("Button 1");
+        JButton b2 = new JButton("Button 2");
+
+        JTextArea text = new JTextArea(5,30);
+        text.setLineWrap(true);
+
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu fileMenu = new JMenu("Файл");
+
+        JMenu newMenu = new JMenu("Правка");
+        fileMenu.add(newMenu);
+
+        JMenuItem txtFileItem = new JMenuItem("Копировать");
+        newMenu.add(txtFileItem);
+
+        JMenuItem imgFileItem = new JMenuItem("Вырезать");
+        newMenu.add(imgFileItem);
+
+        JMenuItem folderItem = new JMenuItem("Вставить");
+        newMenu.add(folderItem);
+
+        JMenuItem openItem = new JMenuItem("Сохранить");
+        fileMenu.add(openItem);
+
+        fileMenu.addSeparator();
+
+        JMenuItem closeItem = new JMenuItem("Выйти");
+        fileMenu.add(closeItem);
+
+        menuBar.add(fileMenu);
+
+        bpanel.add(b1);
+        bpanel.add(b2);
+        tpanel.add(text, BorderLayout.CENTER);
+
+        main.add(bpanel);
+        main.add(tpanel);
+
+        frame.setJMenuBar(menuBar);
+        frame.getContentPane().add(main);
+        frame.setVisible(true);
+    }
+    private void syscalculator(){
+        JFrame frame = new JFrame("Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300,300);
+
+        JPanel main = new JPanel();
+        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+        JPanel tpanel = new JPanel();
+        tpanel.setLayout(new BorderLayout());
+        JPanel bpanel = new JPanel();
+        bpanel.setLayout(new GridLayout(4,4,20,20));
+
+        JButton b7 = new CalculatorButtonAction("7");
+        JButton b8 = new CalculatorButtonAction("8");
+        JButton b9 = new CalculatorButtonAction("9");
+        JButton bslash = new CalculatorButtonAction("/");
+        JButton b4 = new CalculatorButtonAction("4");
+        JButton b5 = new CalculatorButtonAction("5");
+        JButton b6 = new CalculatorButtonAction("6");
+        JButton bstar = new CalculatorButtonAction("*");
+        JButton b1 = new CalculatorButtonAction("1");
+        JButton b2 = new CalculatorButtonAction("2");
+        JButton b3 = new CalculatorButtonAction("3");
+        JButton bminus = new CalculatorButtonAction("-");
+        JButton b0 = new CalculatorButtonAction("0");
+        JButton bdot = new CalculatorButtonAction(".");
+        JButton bequals = new JButton("=");
+        JButton bplus = new CalculatorButtonAction("+");
+
+        bequals.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calcExpr();
+            }
+        });
+
+        text.setLineWrap(true);
+        text.setEnabled(false);
+        text.setDisabledTextColor(Color.BLACK);
+
+        tpanel.add(text, BorderLayout.CENTER);
+
+        bpanel.add(b7);
+        bpanel.add(b8);
+        bpanel.add(b9);
+        bpanel.add(bslash);
+        bpanel.add(b4);
+        bpanel.add(b5);
+        bpanel.add(b6);
+        bpanel.add(bstar);
+        bpanel.add(b1);
+        bpanel.add(b2);
+        bpanel.add(b3);
+        bpanel.add(bminus);
+        bpanel.add(b0);
+        bpanel.add(bdot);
+        bpanel.add(bequals);
+        bpanel.add(bplus);
+
+        tpanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        main.add(tpanel);
+        main.add(bpanel);
+
+        frame.getContentPane().add(main);
+        frame.setVisible(true);
+    }
     public void doThing(){
-        //Задание 1
-        //calculator();
+        calculator();
         selectionbox();
+        textinteractor();
+        syscalculator();
     }
 }
