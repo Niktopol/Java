@@ -1,12 +1,10 @@
 package task19;
 
 public class WrongINNexception extends Exception{
-    private String msg;
     public WrongINNexception(String msg){
-        this.msg = msg;
+        super("INN "+msg+" not found");
     }
-    @Override
-    public String toString() {
-        return "WrongINNexception: INN "+msg+" not found";
+    public WrongINNexception(String msg, Throwable err){
+        super("INN "+msg+" not found", err);
     }
 }

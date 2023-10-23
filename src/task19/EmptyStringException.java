@@ -1,8 +1,10 @@
 package task19;
 
 public class EmptyStringException extends Exception{
-    @Override
-    public String toString() {
-        return "EmptyStringException: inputted string is empty";
+    public EmptyStringException(){
+        super("Inputted string is empty");
+    }
+    public EmptyStringException(Throwable err){
+        super("Inputted string is empty", err);
     }
 }

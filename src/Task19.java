@@ -1,4 +1,4 @@
-import task19.WrongINNexception;
+import task19.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +16,7 @@ public class Task19 {
         }
     }
     public void doThing(){
+        //Задание 1
         Scanner scanner = new Scanner(System.in);
         String name;
         String INN;
@@ -28,5 +29,8 @@ public class Task19 {
         }catch (WrongINNexception e){
             System.out.println(e);
         }
+        //Задание 2
+        LabClassDriver driver = new LabClassDriver();
+        driver.runUI();
     }
 }

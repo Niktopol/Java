@@ -1,12 +1,10 @@
 package task19;
 
 public class StudentNotFoundException extends Exception{
-    private String msg;
     public StudentNotFoundException(String msg){
-        this.msg = msg;
+        super("Student "+msg+" not found");
     }
-    @Override
-    public String toString() {
-        return "StudentNotFoundException: student "+msg+" not found";
+    public StudentNotFoundException(String msg, Throwable err){
+        super("Student "+msg+" not found", err);
     }
 }
