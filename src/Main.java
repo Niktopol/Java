@@ -24,6 +24,7 @@ public class Main {
         Task19 _19th = new Task19();
         Task20 _20th = new Task20();
         Task21 _21th = new Task21();
-        _21th.doThing();
+        Task22 _22th = new Task22();
+        _22th.doThing();
     }
 }
