@@ -17,7 +17,7 @@ public class CalculatorView extends JFrame {
 
         super("Calculator");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(300, 300);
+        this.setSize(600, 300);
 
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
@@ -43,10 +43,13 @@ public class CalculatorView extends JFrame {
         buttons.add(new JButton("="));
         buttons.add(new JButton("+"));
         buttons.add(new JButton("Next"));
+        buttons.add(new JButton("Backspace"));
+        buttons.add(new JButton("Clear"));
 
         text.setLineWrap(true);
         text.setEnabled(false);
         text.setDisabledTextColor(Color.BLACK);
+        text.setFont(new Font("Arial", Font.PLAIN, 25));
 
         tpanel.add(text, BorderLayout.CENTER);
         for (JButton b: buttons){

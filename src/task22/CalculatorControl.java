@@ -24,7 +24,13 @@ public class CalculatorControl {
                 i.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        text.append(i.getText().equals("Next")?" ":i.getText());
+                        if (i.getText().equals("Backspace")){
+                            text.setText(text.getText().substring(0, text.getText().length()-1));
+                        }else if(i.getText().equals("Clear")){
+                            text.setText("");
+                        }else{
+                            text.append(i.getText().equals("Next")?" ":i.getText());
+                        }
                     }
                 });
             }
